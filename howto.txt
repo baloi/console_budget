@@ -1,0 +1,9 @@
+> howto start config.ru via thin server
+  $ thin --rackup config.ru start
+> howto run spec
+  $ spec -c -f specdoc spec/*_spec.rb
+> howto load files
+  require File.expand_path(File.dirname(__FILE__)) + '/../[filenme_without_rb]'
+> howto checkout sources from this repo 
+  $ svn co --username baloi http://baloi.unfuddle.com/svn/baloi_budget .
+

@@ -1,0 +1,61 @@
+> review todos
+ORGANIZE!!!
+> calculate only a given period... (in budgetCalendar and in BudgetMonth)
+  - TESTS FIRST
+  - How to show a budget period/calendar 
+
+> Figure out a way to have alerts in the budget program and how to
+  time those alerts with receiving your salary 
+> CalendarMonth.toHtml()
+
+> create BudgetCalendar::calculate(date_from, date_to)
+> read from a budget and
+  - calculate expenses
+  - be able to "space out" budget...
+> refactor get_weeks method to make it smaller
+  - make a common method to create a week
+    . take note of what params to pass
+  - try not to make any unwanted side effects to instance @ variables
+    . assign intance variable explicitly "@my_var = init_my_var(val)"
+> study how to use BudgetMonth and make an html calendar
+
+> budget app plan (by 08/30/10)
+  - edit directories and files by vim (no input from web..)
+  - display data as webpage (only display, no input of data)
+  - display data via console and may enter data by console
+
+> Add dates for expenses and earnings
+> regular earnings/expenses should be calculated for a month....
+> debt management..
+
+> refactor to: 
+  - find proper names depending on class/method usage
+  - make abstractions work (simplify or abstract more -- depends)
+  - segregate to proper modules maybe
+I need:
+> to show a calendar for a given month
+  - a method to return an array of weeks of the month
+    . each week has 7 days with dates
+  - a method to print calendar
+> input owed, regular earned, expenses, planned payments
+> show owed, earned and available, to save.... in dates at end of week
+> show calendar with grids
+Later:
+> requiring files
+> show budget status at current date???? --- maybe not
+
+----- DONE -----
+> budget calendar should use JADOF for persistence directory: ( 2010/august/29 )
+> use rspec to test budget app
+> backup your .ssh id's to big PC and to some device
+> upload your first heroku app(blog) by wednesday 08/25/10 
+
+> Implement Week initialization 8/16/10 , 1 am
+> implement objMonth.weeks 
+  - test of array/list of weeks in month are correct
+    especially with beginning and end weeks (with padding)
+
+> test specific days of week 8/17/10, 2 am
+> classes for expenses, debt, earnings 8/21/10, 2 am
+  - naming conventions: based on rails?
+> add a calculate method (DONE) 9/13/2010 10:49 PM

@@ -1,0 +1,20 @@
+This is a budget helper application similar to moleskine budgetting but 
+with automated calculations and projections in a familiar calendar format 
+which is can be edited for flexibility of budget.
+
+> shows:
+  - weekly amount to be paid (owed) == in calendar
+  - weekly earned                   == in calendar
+  - weekly extra money              == in calendar
+> payments can be tracked like:
+  - bills with dates to be paid
+  - payments to be made for each end of the week/payday
+> budgets can be tested like:
+  - how to payout loans in a certain time period with projected available money
+    based on salary and bills available for the time period
+  - purchases can be planned
+  - available "fun" money for each week
+> reminders for payments....
+> check moneny in bank
+
+---- THESE ARE THE SUGGESTED SPECS WHICH MAY BE CHANGED AS NEEDED MINIMALLY?----

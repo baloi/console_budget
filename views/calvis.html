@@ -1,0 +1,565 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+  
+
+
+
+
+  
+    
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>CalVis: Creating a customized AJAX UI for your Google Calendar - Google Calendar APIs and Tools - Google Code</title>
+<script type="text/javascript"><!--
+(function(){function a(){this.t={};this.tick=function(c){this.t[c]=(new Date).getTime()};this.tick("start")}var b=new a;window.jstiming={Timer:a,load:b};if(window.external&&window.external.pageT)window.jstiming.pt=window.external.pageT;})();
+
+var _tocPath_ = '/html/apis/calendar/_toc.ezt';
+var codesite_token = null;
+var logged_in_user_email = null;
+//--></script>
+<link href="calvis_files/codesite.css" type="text/css" rel="stylesheet">
+<script src="calvis_files/codesite_head.js" type="text/javascript"></script>
+<script type="text/javascript">CODESITE_CSITimer['load'].tick('bhs');</script>
+<link rel="search" type="application/opensearchdescription+xml" title="Google Code" href="http://code.google.com/osd.xml">
+
+<!--[if IE]><link rel="stylesheet" type="text/css" href="/css/iehacks.css"><![endif]-->
+
+
+  <script src="calvis_files/ga.js" type="text/javascript"></script></head><body class="gc-documentation">
+
+    
+    
+    <div id="gb">
+ <span>
+  
+   
+    <a href="#" id="projects-dropdown" onclick="return false;"><span style="text-decoration: underline;">My favorites</span> <span style="font-size: 0.75em;">▼</span></a>
+    |
+  
+    <a id="lang-dropdown" href="http://code.google.com/" onclick="return false;"><span style="text-decoration: underline;">English</span> <span style="font-size: 0.75em;">▼</span></a>
+  
+   
+    | <a href="https://www.google.com/accounts/Login?continue=http%3A%2F%2Fcode.google.com%2Fapis%2Fcalendar%2Farticles%2Fcalvis.html&amp;followup=http%3A%2F%2Fcode.google.com%2Fapis%2Fcalendar%2Farticles%2Fcalvis.html" onclick="CODESITE_click('/gb/sc/signin');"><span style="">Sign in</span></a>
+   
+  
+ </span>
+</div>
+
+<div class="gbh" style="left: 0px;"></div>
+<div class="gbh" style="right: 0px;"></div>
+
+<div id="gc-container">
+<a id="top"></a>
+<div id="skipto">
+  <a href="#gc-pagecontent">Skip to page content</a>
+  <a href="#gc-toc">Skip to main navigation</a>
+</div>
+
+<div id="gc-header">
+  <div id="logo"><a href="http://code.google.com/">
+  
+  
+     <img src="calvis_files/code_logo.png" alt="Google Code" style="border: 0pt none ; margin: 3px 0pt 0pt;" width="161" height="40">
+  
+  
+  </a></div>
+  <div id="search">
+    <div id="searchForm" class="searchForm">
+      <form id="cse" action="http://www.google.com/cse" accept-charset="utf-8" class="gsc-search-box" onsubmit="executeGSearch(document.getElementById('gsearchInput').value); return false;">
+      <noscript>
+      <input type="hidden" name="cref" value="http://code.google.com/cse/googlecode-context.xml">
+      </noscript>
+      <div id="gsc-search-box">
+        <input id="gsearchInput" name="q" maxlength="2048" class="gsc-input" autocomplete="off" title="Google Code Search" style="width: 345px;" type="text">
+        <div id="cs-searchresults" onclick="event.cancelBubble = true;"></div>
+        <input title="Search" id="gsearchButton" class="gsc-search-button" name="sa" value="Search" type="submit">
+        <div class="greytext">e.g. "ajax apis" or "open source"</div>
+      </div>
+      </form>
+    </div> <!-- end searchForm -->
+  </div> <!-- end search -->
+
+
+
+
+</div> <!-- end gc-header -->
+
+
+<div id="codesiteContent">
+
+<a id="gc-topnav-anchor"></a>
+<div id="gc-topnav">
+  <h1 style="padding: 0pt 0pt 0pt 6px;">Google Calendar APIs and Tools</h1>
+  <ul id="articles" class="gc-topnav-tabs">
+
+    <li id="home_link">
+      <a href="http://code.google.com/apis/calendar/" title="Google Calendar APIs and Tools home page">Home</a>
+    </li>
+  
+    <li id="docs_link">
+      <a href="http://code.google.com/apis/calendar/overview/" title="Official Google Calendar APIs and Tools documentation">Docs</a>
+    </li>
+  
+    <li id="faq_link">
+      <a href="http://code.google.com/apis/calendar/faq.html" title="Answers to frequently asked questions about Google Calendar APIs and Tools">FAQ</a>
+    </li>
+  
+    <li id="articles_link">
+      <a href="http://code.google.com/apis/calendar/articles/" class="selected" title="Focused articles and tutorials for Google Calendar APIs and Tools developers">Articles</a>
+    </li>
+  
+    <li>
+      <a href="http://googleappsdeveloper.blogspot.com/" title="Official Google Calendar APIs and Tools blog">Blog</a>
+    </li>
+  
+    <li>
+      <a href="http://www.google.com/support/forum/p/apps-apis/label?lid=5b1004a84758c3f8&amp;hl=en" title="Google Calendar APIs and Tools developer forum">Forum</a>
+    </li>
+  
+    <li>
+      <a href="http://code.google.com/apis/calendar/terms.html" title="Google Calendar APIs and Tools terms of service">Terms</a>
+    </li>
+  
+
+  </ul>
+</div> <!-- end gc-topnav -->
+
+    <div class="g-section g-tpl-170">
+
+      <div class="g-unit g-first" id="gc-toc">
+        <ul class="treelist tlw-nested-only tlw-processed tlw-instance-0">
+  <li><h2 class="tlw-ignore">Getting Started</h2>
+    <ul>
+      <li><a href="http://code.google.com/apis/calendar/overview/">API Overview Guide</a></li>
+    </ul>
+  </li>
+</ul>
+<div class="line"></div>
+<ul class="treelist tlw-nested-only tlw-processed tlw-instance-1">
+  <li><h2 class="tlw-ignore">Calendar Data API</h2>
+    <ul>
+      <li><a href="http://code.google.com/apis/calendar/data/2.0/developers_guide.html">Developer's Guide</a></li>
+      <li>
+        <ul>
+          <li style="padding-top: 0pt; padding-bottom: 0pt;">
+            <div class="tlw-title tlw-branch"><a href="javascript:void(0)" class="tlw-control" title="Expand Version 2.0 (Current)"><img src="calvis_files/cleardot.gif" alt="Expand Version 2.0 (Current)" class="tlw-control tlw-plus"></a><span class="tlw-title">Version 2.0 <sup>(Current)</sup></span></div><ul style="display: none;" id="1-sub-0">
+              <li><a href="http://code.google.com/apis/calendar/data/2.0/developers_guide_protocol.html">Protocol Guide</a></li>
+              <li><a href="http://code.google.com/apis/calendar/data/2.0/reference.html">Atom Reference</a></li>
+              <div class="line" style="margin: 0.6em 0pt 0pt 1em;"></div>
+              <li><a href="http://code.google.com/apis/calendar/data/2.0/developers_guide_dotnet.html">.NET Guide</a></li>
+              <li><a href="http://code.google.com/apis/calendar/data/2.0/developers_guide_java.html">Java Guide</a></li>
+            </ul>
+          </li>
+          <li style="padding-top: 0pt; padding-bottom: 0pt;">
+            <div class="tlw-title tlw-branch"><a href="javascript:void(0)" class="tlw-control" title="Expand Version 1.0"><img src="calvis_files/cleardot.gif" alt="Expand Version 1.0" class="tlw-control tlw-plus"></a><span class="tlw-title">Version 1.0</span></div><ul style="display: none;" id="1-sub-1">
+              <li><a href="http://code.google.com/apis/calendar/data/1.0/developers_guide_protocol.html">Protocol Guide</a></li>
+              <li><a href="http://code.google.com/apis/calendar/data/1.0/reference.html">Atom Reference</a></li>
+              <div class="line" style="margin: 0.6em 0pt 0pt 1em;"></div>
+              <li><a href="http://code.google.com/apis/calendar/data/1.0/developers_guide_dotnet.html">.NET Guide</a></li>
+              <li><a href="http://code.google.com/apis/calendar/data/1.0/developers_guide_java.html">Java Guide</a></li>
+              <li><a href="http://code.google.com/apis/calendar/data/1.0/developers_guide_js.html">JavaScript Guide</a></li>
+              <li><a href="http://code.google.com/apis/calendar/data/1.0/developers_guide_php.html">PHP Guide</a></li>
+              <li><a href="http://code.google.com/apis/calendar/data/1.0/developers_guide_python.html">Python Guide</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="http://code.google.com/apis/calendar/changelog.html">API Changelog</a></li>
+      <li><a href="http://code.google.com/apis/calendar/code.html">Libraries and Code</a></li>
+    </ul>
+  </li>
+</ul>
+<div class="line"></div>
+
+<ul class="treelist tlw-nested-only tlw-processed tlw-instance-2">
+  <li><h2 class="tlw-ignore">Google Data Protocol</h2>
+    <ul>
+      <li><a href="http://code.google.com/apis/gdata/docs/developers-guide.html">Developer's Guide</a></li>
+      <div class="line" style="margin: 0.6em 0pt 0.3em 1.2em;"></div>
+      <li><a href="http://code.google.com/apis/gdata/docs/batch.html">Batch Processing Guide</a></li>
+      <li><a href="http://code.google.com/apis/gdata/docs/auth/overview.html">Authentication Guide</a>
+    </li></ul>
+  </li>
+</ul>
+      
+
+
+<div class="line"></div>
+<ul class="treelist tlw-nested-only tlw-processed tlw-instance-3">
+  <li><h2 class="tlw-ignore">Calendar Gadgets (Labs)</h2>
+    <ul>
+      <li><a href="http://code.google.com/apis/calendar/gadgets/event/">Event Gadgets</a>
+      </li><li><a href="http://code.google.com/apis/calendar/gadgets/sidebar/">Sidebar Gadgets</a>
+    </li></ul>
+  </li>
+</ul>
+<div class="line"></div>
+<ul class="treelist tlw-nested-only tlw-processed tlw-instance-4">
+  <li><h2 class="tlw-ignore">CalDAV (Labs)</h2>
+    <ul>
+      <li><a href="http://code.google.com/apis/calendar/caldav/">Developer's Guide</a></li>
+    </ul>
+  </li>
+</ul>
+<div class="line"></div>
+<ul class="treelist tlw-nested-only tlw-processed tlw-instance-5">
+  <li><h2 class="tlw-ignore">Publishing Tools</h2>
+    <ul>
+      <li><a href="http://www.google.com/calendar/embedhelper">Embeddable Calendar</a></li>
+      <li><a href="http://www.google.com/googlecalendar/event_publisher_guide.html">Event Publisher</a></li>
+    </ul>
+  </li>
+</ul>
+<div class="line"></div>
+<ul class="treelist tlw-nested-only tlw-processed tlw-instance-6">
+  <li><h2 class="tlw-ignore">Additional Resources</h2>
+    <ul>
+      <li><a href="http://www.google.com/enterprise/marketplace/">Solutions Marketplace</a></li>
+      <li><a href="http://code.google.com/apis/calendar/faq.html">FAQ</a></li>
+      <li><a href="http://groups.google.com/group/google-calendar-help-dataapi?hl=en">Developer Forum</a></li>
+      <li><a href="http://code.google.com/p/gdata-issues/issues/list?q=label:API-Calendar">Issue Tracker</a></li>
+    </ul>
+  </li>
+</ul>
+
+        <a class="hidden" href="#gc-topnav-anchor">More Google Calendar APIs and Tools resource links</a>
+      </div>
+
+      <div style="position: relative;" class="g-unit" id="gc-pagecontent">
+        <h1 class="page_title">CalVis: Creating a customized AJAX UI for your Google Calendar</h1>
+
+
+
+<!-- Article Begins -->
+<em>Austin Chau, Google Developer Programs
+<br>June 2008</em>
+
+<ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#gettingstarted">Using CalVis</a></li>
+  <li><a href="#style">Customize styling</a></li>
+  <li><a href="#demo">Demo</a></li>
+  <li><a href="#contribute">Contribute</a></li>
+  <li><a href="#resources">Resources</a></li>
+</ul>
+
+<p style="font-style: italic;">Note - This is an open source project
+started by a Googler and not an offically supported library. We invite
+all who are interested to join and contribute :)</p>
+
+<a name="introduction"></a><h2>Introduction</h2>
+<p>
+Have you ever wanted to create a customized calendar experience on your
+website using Google Calendar data but not quite sure how to present
+the calendar data visually? There seems to be a good number of
+developers who share this dilemma. While the Google Calendar Data API
+is a powerful web service API as it allows you tap into the richness of
+all your Google Calendar data, it remains a pure read/write data API
+with no provision for data visualization. </p>
+
+<p>
+In this article, I am going to demonstrate a sample library that I have
+written to alleviate this problem. I started the open source project,
+Calendar Visualization (<a href="http://code.google.com/p/calvis/">CalVis</a>),
+which aims to provide an easy and customizable user interface (UI) to
+present data from Google Calendar account. CalVis draws data directly
+from your Google Calendar account via the <a href="http://code.google.com/apis/calendar/developers_guide_protocol.html">Google Calendar Data API</a>.  It makes use of the <a href="http://code.google.com/apis/calendar/developers_guide_js.html">Google Data JavaScript client library</a> underneath to communicate with Google Calendar, and is designed to maximize flexibility in customization.
+</p>
+<p>CalVis is designed to spare developers from having to re-create the
+rich calendar UI experience. The developers can use it as customizable
+template container to overlay Google Calendar data. Developers can use
+CalVis to render calendar data and to achieve a deep level of
+customized integration with their sites. As you will learn, an
+interface that is built on top of CalVis is completely customizable
+through JavaScript, HTML and CSS. Developers would be able to quickly
+and easily deploy a customized calendar interface with a set of
+essential calendar control components to render calendar data. </p>
+
+<a name="#gettingstarted"></a><h2>Using CalVis</h2>
+
+<p>
+The following steps help you to get started on using CalVis for your development.
+</p>
+
+<h4>Step 1 - Load the Calendar Visualization library</h4>
+<p>
+First you need to include the loader in your HTML file. This loader
+dynamically loads the core classes of CalVis as well as its dependent
+libraries (such as Google Data JavaScript client library).
+</p>
+<pre>&lt;script&nbsp;src="calvis.js"&nbsp;type="text/javascript"&gt;&lt;/script&gt;
+</pre>
+
+<h4>Step 2 - Use CSS stylesheet to describe style attributes.</h4>
+<p>
+The default CSS file will produce a default look-and-feel just like this <a href="demo1.html" target="_blank">example</a>.  You can download this CSS file and <a href="#style">customize</a> it to have a completely different look-and-feel.
+</p>
+<pre>&lt;link rel="stylesheet" type="text/css" href="default.css" /&gt;
+</pre>
+
+<h4>Step 3 - Lay out the visual structure of the calendar interface with HTML</h4>
+<p>CalVis has several predefined visual components that makes up the
+calendar interface. The structural arrangement of these interface
+components are defined by your HTML layout. <br><br>
+The UI components of CalVis are: 
+</p><ul>
+  <li>
+  <b>Login Control</b> (only for private calendars) <br>This is the HTML component that provides the login/logout link.<br>
+  </li>
+  <li>
+  <b>Status Control</b> <br>This is the HTML component that provides status information or errors.<br> 
+  </li>
+  <li>
+  <b>Navigation Control</b> <br>This is the HTML component that renders the calendar navigation in respect to the current view.<br> 
+  </li>
+  <li>
+  <b>View Control</b> <br>This is the HTML component that renders the calendar view selection, only month or week views are available in this release.<br> 
+  </li>
+  <li>
+  <b>Calendar Body</b> <br>This is the HTML component that renders the actual calendar.  With grids to designate individual date cells.<br> 
+  </li>
+  <li>
+  <b>Event Display</b><br>This
+is the HTML component that renders the event details upon an event
+trigger. Only "click" and "mouseover" event trigger is supported in
+this release.<br> 
+  </li>
+</ul>
+<p>
+An example of how to visually arrange these components using basic HTML table structure -
+</p>
+<table class="columns">
+<tbody><tr>
+  <td valign="top">
+    <pre>  &lt;table style="width: 800px;"&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2" valign="top"&gt;
+        &lt;div style="float: left;" id="loginControlDiv"&gt;&lt;/div&gt;
+        &lt;div style="float: right;" id="statusControlDiv"&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;      
+    &lt;tr&gt;
+      &lt;td valign="top"&gt;
+        &lt;div id="navControlDiv"&gt;&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td valign="top" align="right"&gt;
+        &lt;div id="viewControlDiv"&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2" valign="top"&gt;
+        &lt;div id="calendarBodyDiv"&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2" valign="top"&gt;
+        &lt;div id="eventDisplayDiv"&gt;&lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+    </pre>
+  </td>
+</tr>
+<tr>
+  <td valign="top">
+    <img src="calvis_files/layout.png">
+  </td>
+</tr>
+</tbody></table>
+<p></p>
+<h4>Step 4 - Initialize and configure CalVis with JavaScript</h4>
+<p>
+You can customize any of the behavior or appearance by using
+JavaScript. Keep in mind that before you can modify an object in
+JavaScript, it must first be loaded by the browser, so you first need
+to wait until all dependent libraries are loaded with the CalVis
+loader, this is done with the calvis.ready() method. This method takes
+a callback method that will be invoked when all libraries are loaded
+and CalVis is ready to be used. </p>
+
+<pre>window.onload = function() {
+  calvis.ready(callback);
+}
+</pre>
+
+<p>
+Inside the callback function, you will instantiate an instance of the
+calvis.Calendar object. Now you have to assign the various CSS IDs
+(these are defined from the HTML layout in Step 3) to map to the
+corresponding calendar UI components.
+</p>
+
+<pre>var calId = 'developer-calendar@google.com';
+
+var calendar = new calvis.Calendar();
+
+// set the CSS IDs for various visual components for the calendar container
+calendar.setCalendarBody('calendarBodyDiv');
+calendar.setStatusControl('statusControlDiv');
+calendar.setNavControl('navControlDiv');
+calendar.setViewControl('viewControlDiv');
+</pre>
+
+<p>
+Now you can specify which Google Calendar account CalVis should be pulling data from.  To specify a public calendar -
+</p>
+
+<pre>// set the calenar to pull data from this Google Calendar account
+calendar.setPublicCalendar(calId);  
+</pre>
+
+<p>
+To specify a private calendar, you also need to specify the HTML component that corresponds to the login button -
+</p>
+
+<pre>// set the calenar to pull data from this Google Calendar account
+calendar.setPrivateCalendar(calId);
+calendar.setLoginControl('loginControlDiv');
+</pre>
+
+<p>In order to display event details, you need to provide a callback
+method so that when an event listing on the calendar is triggered
+(either by 'click' or 'mouseover' event), the callback will be invoked
+to display the event details. An example of a event display callback-
+</p>
+
+<pre>calendar.setEventCallback('click', displayEvent);
+
+function displayEvent(event) {    
+  var title = event.getTitle().getText();  
+  var date = event.getTimes()[0].getStartTime().getDate();
+  var content = event.getContent().getText();  
+  
+  var eventHtml = [;
+  eventHtml.push(date.toString());
+  eventHtml.push('&lt;br&gt;&lt;br&gt;');
+  eventHtml.push('&lt;b&gt;Event title:&lt;/b&gt; ');
+  eventHtml.push(title);
+  eventHtml.push('&lt;br&gt;');
+  eventHtml.push('&lt;br&gt;');
+  eventHtml.push('&lt;b&gt;Description:&lt;/b&gt;');
+  eventHtml.push('&lt;p style="font-size: 11px;"&gt;');
+  eventHtml.push(content); 
+  eventHtml.push('&lt;/p&gt;');
+  eventHtml.push('&lt;br&gt;');
+
+  document.getElementById('eventDisplayDiv').innerHTML = eventHtml.join('');
+}      
+</pre>Finally, you can set the default view of the calendar (either a
+'month' or 'week' view) and invoke the render() method to display the
+calendar UI -
+<pre>// set the default view to be "month"
+calendar.setDefaultView('month');
+
+// display the calendar
+calendar.render();  
+</pre>
+
+<a name="style"></a><h2>Customize styling</h2>
+<p>To customize the size, color or style of an individual date cell,
+you just need to modify the CSS styling attributes of a few predefined
+CSS classes. For instance, you can modify the width and height of each
+date cell in your month view by overriding the default CSS class
+monthViewCell and contentCell.
+</p>
+<img src="calvis_files/monthviewstyle.png">
+
+
+<a name="demo"></a><h2>Demo</h2>
+<p>
+This <a href="demo1.html" target="_blank">demo</a> demonstrates using CalVis with the default styling.<br><br>
+This <a href="demo2.html" target="_blank">demo</a> demonstrates using CalVis with customization to create a mash-up with Google Maps and YouTube API.
+</p>
+<a name="contribute"></a><h2>Contribute</h2>
+<p>
+CalVis an <a href="http://code.google.com/p/calvis/">open source project</a>, whose source code is available for <a href="http://calvis.googlecode.com/svn/trunk/">download via Subversion</a> on Google Code Project Hosting.
+</p>
+
+<a name="resources"></a><h2>Resources</h2>
+<p>
+</p><ul>
+  <li><a href="http://code.google.com/p/calvis/">Google Code Hosting for CalVis</a></li>
+  <li><a href="http://code.google.com/apis/calendar/developers_guide_js.html">Google Calendar Data API Developer Guide</a></li>
+  <li><a href="http://groups.google.com/group/google-calendar-help-dataapi">Google Calendar Data API Developer Forum</a></li>
+</ul>
+
+
+
+
+
+      <div style="height: 4333px;" id="gc-collapsible"></div></div><!-- end gc-pagecontent -->
+   </div><!-- end gooey wrapper -->
+
+    </div> <!-- end codesite content -->
+
+
+<div id="gc-footer" dir="ltr">
+  <div class="text">
+    
+    ©2010 Google -
+    <a href="http://code.google.com/">Code Home</a> -
+    <a href="http://code.google.com/terms.html">Terms of Service</a> -
+    <a href="http://code.google.com/privacy.html">Privacy Policy</a> -
+    <a href="http://code.google.com/more/">Site Directory</a>
+    <br> <br>
+    Google Code offered in:
+    <a href="http://code.google.com/intl/en/">English</a> -
+    <a href="http://code.google.com/intl/es/">Español</a> -
+    <a href="http://code.google.com/intl/ja/">日本語</a> -
+    <a href="http://code.google.com/intl/ko/">한국어</a> -
+    <a href="http://code.google.com/intl/pt-BR/">Português</a> -
+    <a href="http://code.google.com/intl/ru/">Pусский</a> -
+    <a href="http://code.google.com/intl/zh-CN/">中文(简体)</a> -
+    <a href="http://code.google.com/intl/zh-TW/">中文(繁體)</a>
+  </div>
+</div><!-- end gc-footer -->
+
+</div><!-- end gc-container -->
+
+<script type="text/javascript">CODESITE_CSITimer['load'].tick('ats');</script>
+<script src="calvis_files/codesite_tail.js" type="text/javascript"></script>
+
+
+
+
+<script type="text/javascript">
+var _gaq = _gaq || [];
+
+_gaq.push(
+
+
+    ['siteTracker._setAccount', 'UA-18071-1'],
+    ['siteTracker._setDomainName', 'code.google.com'],
+    ['siteTracker._setCookiePath', window.location.pathname.substring(0,
+        window.location.pathname.lastIndexOf('/') + 1)],
+    ['siteTracker._trackPageview']
+);
+(function() {
+  var ga = document.createElement('script');
+
+  ga.type = 'text/javascript';
+  ga.async = true;
+  ga.src = 'http://www.google-analytics.com/ga.js';
+  (document.getElementsByTagName('head')[0] ||
+   document.getElementsByTagName('body')[0]).appendChild(ga);
+ })();
+</script>
+
+
+
+
+  <div style="display: none;" id="menuDiv-projects-dropdown" class="menuDiv instance0"><div class="menuCategory controls"><a href="https://www.google.com/accounts/Login?continue=http%3A%2F%2Fcode.google.com%2Fapis%2Fcalendar%2Farticles%2Fcalvis.html&amp;amp;followup=http%3A%2F%2Fcode.google.com%2Fapis%2Fcalendar%2Farticles%2Fcalvis.html" style="display: block;" class="menuItem">Sign in to see your favorites</a><hr class="menuSeparator"><a href="http://code.google.com/more/" style="display: block;" class="menuItem">Find developer products...</a><a href="http://code.google.com/hosting/" style="display: block;" class="menuItem">Find open source projects...</a></div></div><div style="display: none;" id="menuDiv-lang-dropdown" class="menuDiv instance1"><div class="menuCategory default"><a href="http://code.google.com/intl/en/apis/calendar/articles/calvis.html" style="display: block;" class="menuItem">English</a><a href="http://code.google.com/intl/es/apis/calendar/articles/calvis.html" style="display: block;" class="menuItem">Español</a><a href="http://code.google.com/intl/ja/apis/calendar/articles/calvis.html" style="display: block;" class="menuItem">日本語</a><a href="http://code.google.com/intl/ko/apis/calendar/articles/calvis.html" style="display: block;" class="menuItem">한국어</a><a href="http://code.google.com/intl/pt-BR/apis/calendar/articles/calvis.html" style="display: block;" class="menuItem">Português (Brasil)</a><a href="http://code.google.com/intl/ru/apis/calendar/articles/calvis.html" style="display: block;" class="menuItem">Pусский</a><a href="http://code.google.com/intl/zh-CN/apis/calendar/articles/calvis.html" style="display: block;" class="menuItem">中文 (简体)</a><a href="http://code.google.com/intl/zh-TW/apis/calendar/articles/calvis.html" style="display: block;" class="menuItem">中文 (繁體)</a></div></div><div id="gc-collapsible-arrow"></div><div id="cs-searchresults"><div id="cs-recommended">Suggestions</div><div id="searchResult1"></div><div id="searchResult2"></div><div id="searchResult3"></div><div id="searchResult4"></div><div id="searchResult5"></div><div id="searchResult6"></div><div id="searchResult7"></div></div><iframe style="display: none;" src="calvis_files/google.html" id="y2Google"></iframe><div style="display: none;" id="YontooInstallID">E4E7C39F-290B-4350-9AE9-900B531D5B57</div><div style="display: none;" id="YontooClientVersion">1.02.28</div></body></html>

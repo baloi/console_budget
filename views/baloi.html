@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>Budget Calendar</title>
+</head>
+<link rel="stylesheet" type="text/css" href="baloi.css" />
+<script type="text/javascript" src="calvis.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+  calvis.ready(main);
+}
+
+function main() {
+  var calId = 'developer-calendar@google.com';
+
+  var calendar = new calvis.Calendar();
+
+  // set the CSS IDs for various visual components for the calendar container
+  calendar.setCalendarBody('calendarBodyDiv');
+  calendar.setNavControl('navControlDiv');
+
+  calendar.setDefaultView('month');
+  // display the calendar
+  calendar.render();  
+}
+
+</script>
+<body>
+  <div align="center">
+
+    <table style="width: 800px;">
+      <tr>
+        <td valign="top">
+          <div id="navControlDiv"></div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" valign="top">
+          <div id="calendarBodyDiv"></div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" valign="top">
+          <div id="eventDisplayDiv"></div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
+
